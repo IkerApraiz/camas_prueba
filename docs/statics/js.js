@@ -54,3 +54,28 @@
       });
     }
 
+    // Lectura de código QR
+    const btnScan = document.getElementById('btn-scan');
+    const readerDiv = document.getElementById('reader');
+    const resultadoDiv = document.getElementById('resultado');
+    let html5QrcodeScanner;
+
+    btnScan.onclick = function() {
+      btnScan.style.display = 'none';
+      readerDiv.style.display = 'block';
+      html5QrcodeScanner = new Html5Qrcode("reader");
+      html5QrcodeScanner.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        (decodedText, decodedResult) => {
+          resultadoDiv.innerText = decodedText; // Muestra el texto del QR
+          html5QrcodeScanner.stop();
+          readerDiv.style.display = 'none';
+          btnScan.style.display = 'block';
+        },
+        (errorMessage) => {
+          // Puedes mostrar errores si lo deseas
+        }
+      );
+    };
+

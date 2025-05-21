@@ -277,3 +277,43 @@
     .switch input:checked + .slider:before {
       transform: translateX(20px);
     }
+
+    /*Botón*/
+
+    .f7-btn {
+      display: block;
+      margin: 5px auto 0 auto;
+      padding: 5px 10px;
+      font-size: 1.1em;
+      font-weight: 500;
+      color: #fff;
+      background: linear-gradient(90deg, #2196f3 0%, #3f51b5 100%);
+      border: none;
+      border-radius: 28px;
+      box-shadow: 0 4px 16px rgba(33,150,243,0.15);
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.1s;
+      outline: none;
+      letter-spacing: 0.04em;
+    }
+    .f7-btn:active {
+      box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+      transform: scale(0.97);
+    }
+ /*Lectura de QR*/
+    #reader { 
+      width: 320px; 
+      margin: 30px auto 0 auto; 
+    }
+    #resultado { 
+      margin-top: 24px; 
+      font-size: 1.2em; 
+      color: #2196f3; 
+      text-align: center; 
+      background: #e3f2fd;
+      border-radius: 12px;
+      padding: 12px 0;
+      width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.06);
