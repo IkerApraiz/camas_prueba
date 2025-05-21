@@ -2,7 +2,7 @@
   "name": "Lector QR",
   "short_name": "QR",
   "description": "App para leer códigos QR con la cámara",
-  "start_url": ".",
+  "start_url": "https://ikerapraiz.github.io/camas_prueba/",
   "display": "standalone",
   "background_color": "#43a047",
   "theme_color": "#2196f3",
