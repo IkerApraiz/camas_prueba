@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>TabsetPanel siempre al final (Framework7 style)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous" />
+  <link rel="canonical" href="https://ikerapraiz.github.io/camas_prueba/" />
+  <link rel="manifest" href="/camas_prueba/manifest.webmanifest">
+  <meta name="theme-color" content="#2196f3">
+  <link rel="stylesheet" href="statics/styles.css">
+</head>
+<body>
+  <div class="page">
+    <div class="navbar">
+      <img src="statics/www/Osakidetza.png" alt="Logo" style="height:32px; margin-right:5px;">
+      <span style="flex:1; text-align:center;">
+        Registro de camas / colchones
+      </span>
+    </div>
+    <div class="page-content">
+      <div class="tabs">
+        <div class="tab tab-active" id="tab1">
+          <div class="panel">
+            <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja Unidad</label>
+            <div class="smart-select-trigger" id="smartSelectTrigger">
+              <span id="smartSelectValue">Elige una opción</span>
+            </div>
+              <div class="smart-select-modal" id="smartSelectModal">
+                <div class="smart-select-popup">
+                    <div class="smart-select-title">
+                      Selecciona una opción
+                    </div>
+                    <input type="text" class="smart-select-search" id="smartSelectSearch" placeholder="Buscar...">
+                    <ul class="smart-select-options" id="smartSelectOptions">
+                        <li data-value="opcion1">Urgencias</li>
+                        <li data-value="opcion2">Primera</li>
+                        <li data-value="opcion3">Segunda</li>
+                        <li data-value="opcion4">Tercera</li>
+                        <li data-value="opcion4">Cuarta</li>
+                        <li data-value="opcion4">Quinta</li>
+                    </ul>
+                    <button class="smart-select-close" id="smartSelectClose">Cerrar</button>
+                </div>
+              </div>
+            <br>
+            <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja habitación / Box</label>
+            <div class="smart-select-trigger" id="smartSelectTrigger">
+              <span id="smartSelectValue">Elige una opción</span>
+            </div>
+        </div>
+        <br>
+        <div class="panel">
+          <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja dispositivo</label>
+              <form>
+                <div class="radio-group">
+                  <label class="item-radio">
+                    <input type="radio" name="demo-radio" value="Drinks" checked>
+                    <span class="icon-radio"></span>
+                    <span class="item-title">Cama</span>
+                  </label>
+                  <label class="item-radio">
+                    <input type="radio" name="demo-radio" value="Snacks">
+                    <span class="icon-radio"></span>
+                    <span class="item-title">Colchón</span>
+                  </label>
+                </div>
+              </form>
+            <br>
+            <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja dispositivo</label>
+            <div class="smart-select-trigger" id="smartSelectTrigger">
+              <span id="smartSelectValue">Elige una opción</span>
+            </div>
+        </div>
+        <br>
+        <div class="panel">
+            <label style="font-weight:500; margin-bottom:8px; display:block;">Ocupación</label>
+            <span class="switch-label">¿Dispositivo ocupado?</span>
+            <label class="switch">
+              <input type="checkbox" id="mySwitch">
+              <span class="slider"></span>
+            </label>
+        </div>  
+      </div>
+
+
+        <div class="tab" id="tab2">
+          <div class="panel">
+            <button id="btn-scan" class="f7-btn">📷 Activar cámara y leer QR</button>
+          </div>  
+          <br>
+          <div class="panel">
+            <span class="switch-label">Dispositivo</span>
+            <div id="reader" style="display:none"></div>
+            <div id="pantallazo-verde">Correcto</div>
+            <div id="resultado"></div>
+          </div>
+        <div class="tab" id="tab3">
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar tabbar toolbar-bottom">
+      <div class="toolbar-inner">
+        <a href="#tab1" class="tab-link tab-link-active" data-tab="tab1">
+            <i class="fas fa-pen" style="margin-right:10px;"></i> Manual</a>
+        <a href="#tab2" class="tab-link" data-tab="tab2">
+            <i class="fas fa-camera" style="margin-right:10px;"></i> Automático </a>
+        <a href="#tab3" class="tab-link" data-tab="tab3">
+            <i class="fas fa-table" style="margin-right:10px;"></i> Visualización</a>
+      </div>
+    </div>
+  </div>
+
+<script src="statics/js.js"></script> 
+<script>
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register (
+          '/camas_prueba/sw.js',
+          {scope: '/camas_prueba/'}
+        )
+      }
+  </script>
+</body>
+</html>

@@ -2,119 +2,147 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>TabsetPanel siempre al final (Framework7 style)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="https://unpkg.com/html5-qrcode"></script>
+  <title>Inicio de Sesión</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous" />
   <link rel="canonical" href="https://ikerapraiz.github.io/camas_prueba/" />
   <link rel="manifest" href="/camas_prueba/manifest.webmanifest">
   <meta name="theme-color" content="#2196f3">
   <link rel="stylesheet" href="statics/styles.css">
+  <style>
+    body {
+      background-color: #f5f7fa;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+    .login-container h2 {
+      margin: 0 0 24px 0;
+      font-weight: 600;
+      font-size: 1.8rem;
+      color: #1a237e;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #37474f;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      border: 1.8px solid #cfd8dc;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #263238;
+      outline: none;
+      transition: border-color 0.25s ease;
+      box-sizing: border-box;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #3949ab;
+      box-shadow: 0 0 6px rgba(57, 73, 171, 0.4);
+    }
+    .btn-submit {
+      background: linear-gradient(90deg, #3949ab 0%, #1a237e 100%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 0;
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(57, 73, 171, 0.4);
+    }
+    .btn-submit:hover {
+      background: linear-gradient(90deg, #1a237e 0%, #3949ab 100%);
+    }
+    .error-message {
+      color: #d32f2f;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      display: none;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <div class="page">
-    <div class="navbar">
-      <img src="statics/www/Osakidetza.png" alt="Logo" style="height:32px; margin-right:5px;">
-      <span style="flex:1; text-align:center;">
-        Registro de camas / colchones
-      </span>
-    </div>
-    <div class="page-content">
-      <div class="tabs">
-        <div class="tab tab-active" id="tab1">
-          <div class="panel">
-            <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja Unidad</label>
-            <div class="smart-select-trigger" id="smartSelectTrigger">
-              <span id="smartSelectValue">Elige una opción</span>
-            </div>
-              <div class="smart-select-modal" id="smartSelectModal">
-                <div class="smart-select-popup">
-                    <div class="smart-select-title">
-                      Selecciona una opción
-                    </div>
-                    <input type="text" class="smart-select-search" id="smartSelectSearch" placeholder="Buscar...">
-                    <ul class="smart-select-options" id="smartSelectOptions">
-                        <li data-value="opcion1">Urgencias</li>
-                        <li data-value="opcion2">Primera</li>
-                        <li data-value="opcion3">Segunda</li>
-                        <li data-value="opcion4">Tercera</li>
-                        <li data-value="opcion4">Cuarta</li>
-                        <li data-value="opcion4">Quinta</li>
-                    </ul>
-                    <button class="smart-select-close" id="smartSelectClose">Cerrar</button>
-                </div>
-              </div>
-            <br>
-            <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja habitación / Box</label>
-            <div class="smart-select-trigger" id="smartSelectTrigger">
-              <span id="smartSelectValue">Elige una opción</span>
-            </div>
-        </div>
-        <br>
-        <div class="panel">
-          <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja dispositivo</label>
-              <form>
-                <div class="radio-group">
-                  <label class="item-radio">
-                    <input type="radio" name="demo-radio" value="Drinks" checked>
-                    <span class="icon-radio"></span>
-                    <span class="item-title">Cama</span>
-                  </label>
-                  <label class="item-radio">
-                    <input type="radio" name="demo-radio" value="Snacks">
-                    <span class="icon-radio"></span>
-                    <span class="item-title">Colchón</span>
-                  </label>
-                </div>
-              </form>
-            <br>
-            <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja dispositivo</label>
-            <div class="smart-select-trigger" id="smartSelectTrigger">
-              <span id="smartSelectValue">Elige una opción</span>
-            </div>
-        </div>
-        <br>
-        <div class="panel">
-            <label style="font-weight:500; margin-bottom:8px; display:block;">Ocupación</label>
-            <span class="switch-label">¿Dispositivo ocupado?</span>
-            <label class="switch">
-              <input type="checkbox" id="mySwitch">
-              <span class="slider"></span>
-            </label>
-        </div>  
-      </div>
+  <div class="login-container" role="main" aria-label="Formulario de inicio de sesión">
+    <h2>Inicio de Sesión</h2>
+    <form id="loginForm" autocomplete="off" novalidate>
+      <div class="error-message" id="errorMsg" role="alert"></div>
 
+      <label for="username">Nombre de usuario</label>
+      <input type="text" id="username" name="username" placeholder="Ingrese su nombre de usuario" required aria-required="true" />
 
-        <div class="tab" id="tab2">
-          <div class="panel">
-            <button id="btn-scan" class="f7-btn">📷 Activar cámara y leer QR</button>
-          </div>  
-          <br>
-          <div class="panel">
-            <span class="switch-label">Dispositivo</span>
-            <div id="reader" style="display:none"></div>
-            <div id="pantallazo-verde">Correcto</div>
-            <div id="resultado"></div>
-          </div>
-        <div class="tab" id="tab3">
-          
-        </div>
-      </div>
-    </div>
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required aria-required="true" />
 
-    <div class="toolbar tabbar toolbar-bottom">
-      <div class="toolbar-inner">
-        <a href="#tab1" class="tab-link tab-link-active" data-tab="tab1">
-            <i class="fas fa-pen" style="margin-right:10px;"></i> Manual</a>
-        <a href="#tab2" class="tab-link" data-tab="tab2">
-            <i class="fas fa-camera" style="margin-right:10px;"></i> Automático </a>
-        <a href="#tab3" class="tab-link" data-tab="tab3">
-            <i class="fas fa-table" style="margin-right:10px;"></i> Visualización</a>
-      </div>
-    </div>
+      <button type="submit" class="btn-submit">Iniciar sesión</button>
+    </form>
   </div>
 
-<script src="statics/js.js"></script> 
+  <script>
+    const form = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    // Usuario y contraseña de prueba
+    const USUARIO_PRUEBA = 'usuario';
+    const PASSWORD_PRUEBA = 'password123';
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      errorMsg.style.display = 'none';
+      errorMsg.textContent = '';
+
+      const username = form.username.value.trim();
+      const password = form.password.value.trim();
+
+      if (!username) {
+        errorMsg.textContent = 'Por favor, ingrese su nombre de usuario.';
+        errorMsg.style.display = 'block';
+        form.username.focus();
+        return;
+      }
+
+      if (!password) {
+        errorMsg.textContent = 'Por favor, ingrese su contraseña.';
+        errorMsg.style.display = 'block';
+        form.password.focus();
+        return;
+      }
+
+      // Validación de usuario y contraseña de prueba
+      if (username === USUARIO_PRUEBA && password === PASSWORD_PRUEBA) {
+        window.location.href = `app.html?username=${encodeURIComponent(username)}`;
+      } else {
+        errorMsg.textContent = 'Usuario o contraseña incorrectos.';
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
+  
 <script>
       if (navigator.serviceWorker) {
         navigator.serviceWorker.register (
