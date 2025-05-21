@@ -1,10 +1,10 @@
 const CACHE_NAME = 'qr-pwa-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
+  '',
+  'index.html',
+  'manifest.json',
+  'icon-192.png',
+  'icon-512.png',
   // Añade aquí otros archivos (CSS, JS, imágenes) que tu app necesite offline
 ];
 
