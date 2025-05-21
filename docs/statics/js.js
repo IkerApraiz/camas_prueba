@@ -58,24 +58,42 @@
     const btnScan = document.getElementById('btn-scan');
     const readerDiv = document.getElementById('reader');
     const resultadoDiv = document.getElementById('resultado');
+    const pantallazo = document.getElementById('pantallazo-verde');
     let html5QrcodeScanner;
 
     btnScan.onclick = function() {
       btnScan.style.display = 'none';
+      resultadoDiv.style.display = 'none';
       readerDiv.style.display = 'block';
       html5QrcodeScanner = new Html5Qrcode("reader");
       html5QrcodeScanner.start(
         { facingMode: "environment" },
         { fps: 10, qrbox: 250 },
         (decodedText, decodedResult) => {
-          resultadoDiv.innerText = decodedText; // Muestra el texto del QR
           html5QrcodeScanner.stop();
           readerDiv.style.display = 'none';
-          btnScan.style.display = 'block';
+          // Mostrar pantallazo verde con flex solo cuando sea necesario
+          pantallazo.style.display = 'flex';
+          pantallazo.style.alignItems = 'center';
+          pantallazo.style.justifyContent = 'center';
+          setTimeout(() => {
+            pantallazo.style.display = 'none';
+            resultadoDiv.innerText = decodedText;
+            resultadoDiv.style.display = 'block';
+            btnScan.style.display = 'block';
+          }, 1000);
         },
         (errorMessage) => {
           // Puedes mostrar errores si lo deseas
         }
       );
     };
+
+    // PWA
+
+    if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js');
+  });
+}
 
