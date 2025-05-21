@@ -1,23 +1,16 @@
-const CACHE_NAME = 'qr-pwa-v1';
-const urlsToCache = [
-  '',
-  'index.html',
-  'manifest.json',
-  'icon-192.png',
-  'icon-512.png',
-  // Añade aquí otros archivos (CSS, JS, imágenes) que tu app necesite offline
-];
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+self.addEventListener('install', (e) => {
+  e.waitUntil(
+    caches.open('miapp-cache').then((cache) => cache.addAll([
+      '/index.html',
+      '/statics/styles.css',
+      '/statics/js.js',
+      '/statics/www/Osakidetza.png'
+    ]))
   );
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
+self.addEventListener('fetch', (e) => {
+  e.respondWith(
+    caches.match(e.request).then((response) => response || fetch(e.request))
   );
 });
