@@ -115,5 +115,13 @@
   </div>
 
 <script src="statics/js.js"></script> 
+<script>
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register (
+          '/camas_prueba/sw.js',
+          {scope: '/camas_prueba/'}
+        )
+      }
+  </script>
 </body>
 </html>
