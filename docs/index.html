@@ -5,196 +5,15 @@
   <title>TabsetPanel siempre al final (Framework7 style)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous" />
-  <style>
-    /* Reset y base */
-    body, html {
-      margin: 0; padding: 0; height: 100%;
-      font-family: system-ui, Arial, sans-serif;
-      background: #f7f7f8;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    /* Contenedor de página */
-    .page {
-      flex: 1 0 auto;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      padding-bottom: 56px; /* espacio para tabbar */
-      box-sizing: border-box;
-    }
-    /* Contenido principal */
-    .page-content {
-      flex: 1 1 auto;
-      overflow-y: auto;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    /* Navbar simulado */
-    .navbar {
-      height: 44px;
-      background: #7c8a98;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-    .panel {
-        padding:16px; 
-        background:#fff; 
-        border-radius:8px; 
-        box-shadow:0 1px 6px rgba(0,0,0,0.07); 
-        max-width:100%; 
-        margin:auto;
-        
-    }
-    /* Tabbar / toolbar inferior */
-    .toolbar.tabbar.toolbar-bottom {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      height: 56px;
-      background: #fff;
-      border-top: 1px solid #ddd;
-      display: flex;
-      box-shadow: 0 -1px 5px rgba(98, 54, 54, 0.1);
-      z-index: 1000;
-    }
-    .toolbar-inner {
-      flex: 1;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-    .tab-link {
-      flex: 1;
-      text-align: center;
-      color: #007aff;
-      font-weight: 500;
-      font-size: 14px;
-      cursor: pointer;
-      padding: 8px 0;
-      user-select: none;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .tab-link.tab-link-active {
-      color: white;
-      background-color: #007aff;
-      border-radius: 8px;
-    }
-    /* Contenido de tabs */
-    .tabs {
-      flex: 1 0 auto;
-    }
-    .tab {
-      display: none;
-      animation: fadein 0.2s;
-    }
-    .tab.tab-active {
-      display: block;
-    }
-    @keyframes fadein {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    .smart-select-trigger {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 16px;
-      background: #f2f2f7;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      color: #222;
-    }
-    .smart-select-trigger:after {
-      content: '▼';
-      font-size: 12px;
-      margin-left: 8px;
-      color: #999;
-    }
-    /* Modal */
-    .smart-select-modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.3);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-    }
-    .smart-select-modal.active {
-      display: flex;
-    }
-    .smart-select-popup {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-      width: 90%;
-      max-width: 340px;
-      max-height: 80vh;
-      overflow: auto;
-      padding: 24px 16px 16px 16px;
-      animation: fadein 0.2s;
-    }
-    @keyframes fadein {
-      from { opacity: 0; transform: translateY(30px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    .smart-select-title {
-      font-weight: bold;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-    .smart-select-options {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .smart-select-options li {
-      padding: 10px 8px;
-      border-bottom: 1px solid #eee;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .smart-select-options li.selected {
-      background: #e0f0ff;
-      color: #007aff;
-      font-weight: 500;
-    }
-    .smart-select-close {
-      display: block;
-      margin: 18px auto 0 auto;
-      background: #007aff;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 8px 24px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    /* Opcional: barra de búsqueda */
-    .smart-select-search {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 12px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 15px;
-    }
-  </style>
+  <link rel="stylesheet" href="statics/styles.css">
 </head>
 <body>
   <div class="page">
     <div class="navbar">
-        <img src="www/Osakidetza.png" alt="Logo" style="height:32px; margin-right:5px;">
-    <span style="flex:1; text-align:center;">
-    Registro de camas / colchones
-    </span>
+      <img src="statics/www/Osakidetza.png" alt="Logo" style="height:32px; margin-right:5px;">
+      <span style="flex:1; text-align:center;">
+        Registro de camas / colchones
+      </span>
     </div>
     <div class="page-content">
       <div class="tabs">
@@ -202,57 +21,73 @@
           <div class="panel">
             <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja Unidad</label>
             <div class="smart-select-trigger" id="smartSelectTrigger">
-            <span id="smartSelectValue">Elige una opción</span>
+              <span id="smartSelectValue">Elige una opción</span>
             </div>
               <div class="smart-select-modal" id="smartSelectModal">
-            <div class="smart-select-popup">
-            <div class="smart-select-title">Selecciona una opción</div>
-            <input type="text" class="smart-select-search" id="smartSelectSearch" placeholder="Buscar...">
-            <ul class="smart-select-options" id="smartSelectOptions">
-                <li data-value="opcion1">Urgencias</li>
-                <li data-value="opcion2">Primera</li>
-                <li data-value="opcion3">Segunda</li>
-                <li data-value="opcion4">Tercera</li>
-                <li data-value="opcion4">Cuarta</li>
-                <li data-value="opcion4">Quinta</li>
-            </ul>
-            <button class="smart-select-close" id="smartSelectClose">Cerrar</button>
+                <div class="smart-select-popup">
+                    <div class="smart-select-title">
+                      Selecciona una opción
+                    </div>
+                    <input type="text" class="smart-select-search" id="smartSelectSearch" placeholder="Buscar...">
+                    <ul class="smart-select-options" id="smartSelectOptions">
+                        <li data-value="opcion1">Urgencias</li>
+                        <li data-value="opcion2">Primera</li>
+                        <li data-value="opcion3">Segunda</li>
+                        <li data-value="opcion4">Tercera</li>
+                        <li data-value="opcion4">Cuarta</li>
+                        <li data-value="opcion4">Quinta</li>
+                    </ul>
+                    <button class="smart-select-close" id="smartSelectClose">Cerrar</button>
+                </div>
+              </div>
+            <br>
+            <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja habitación / Box</label>
+            <div class="smart-select-trigger" id="smartSelectTrigger">
+              <span id="smartSelectValue">Elige una opción</span>
             </div>
-        </div>
         </div>
         <br>
         <div class="panel">
-            <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja Dispositivo</label>
+          <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja dispositivo</label>
+              <form>
+                <div class="radio-group">
+                  <label class="item-radio">
+                    <input type="radio" name="demo-radio" value="Drinks" checked>
+                    <span class="icon-radio"></span>
+                    <span class="item-title">Cama</span>
+                  </label>
+                  <label class="item-radio">
+                    <input type="radio" name="demo-radio" value="Snacks">
+                    <span class="icon-radio"></span>
+                    <span class="item-title">Colchón</span>
+                  </label>
+                </div>
+              </form>
+            <br>
+            <label style="font-weight:500; margin-bottom:8px; display:block;">Escoja dispositivo</label>
             <div class="smart-select-trigger" id="smartSelectTrigger">
-            <span id="smartSelectValue">Elige una opción</span>
-            </div>
-              <div class="smart-select-modal" id="smartSelectModal">
-            <div class="smart-select-popup">
-            <div class="smart-select-title">Selecciona una opción</div>
-            <input type="text" class="smart-select-search" id="smartSelectSearch" placeholder="Buscar...">
-            <ul class="smart-select-options" id="smartSelectOptions">
-                <li data-value="opcion1">Urgencias</li>
-                <li data-value="opcion2">Primera</li>
-                <li data-value="opcion3">Segunda</li>
-                <li data-value="opcion4">Tercera</li>
-                <li data-value="opcion4">Cuarta</li>
-                <li data-value="opcion4">Quinta</li>
-            </ul>
-            <button class="smart-select-close" id="smartSelectClose">Cerrar</button>
+              <span id="smartSelectValue">Elige una opción</span>
             </div>
         </div>
-        </div>
-        
-          
-        </div>
+        <br>
+        <div class="panel">
+            <label style="font-weight:500; margin-bottom:8px; display:block;">Ocupación</label>
+            <span class="switch-label">¿Dispositivo ocupado?</span>
+            <label class="switch">
+              <input type="checkbox" id="mySwitch">
+              <span class="slider"></span>
+            </label>
+        </div>  
+      </div>
+
+
         <div class="tab" id="tab2">
             <div class="panel">
 
             </div>
         </div>
         <div class="tab" id="tab3">
-          <h2>Contenido Tab 3</h2>
-          <p>Este es el contenido de la tercera pestaña.</p>
+          
         </div>
       </div>
     </div>
@@ -269,64 +104,6 @@
     </div>
   </div>
 
-  <script>
-    // Lógica para cambiar tabs
-    document.querySelectorAll('.tab-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetTab = link.getAttribute('data-tab');
-
-        // Activar tab-link
-        document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('tab-link-active'));
-        link.classList.add('tab-link-active');
-
-        // Mostrar tab correspondiente
-        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('tab-active'));
-        const tabToShow = document.getElementById(targetTab);
-        if (tabToShow) tabToShow.classList.add('tab-active');
-      });
-    });
-  </script>
-
-   <script>
-    // Elementos
-    const trigger = document.getElementById('smartSelectTrigger');
-    const modal = document.getElementById('smartSelectModal');
-    const closeBtn = document.getElementById('smartSelectClose');
-    const options = document.getElementById('smartSelectOptions');
-    const valueSpan = document.getElementById('smartSelectValue');
-    const searchInput = document.getElementById('smartSelectSearch');
-
-    // Abrir modal
-    trigger.onclick = () => { modal.classList.add('active'); searchInput.value=''; filterOptions(''); };
-
-    // Cerrar modal
-    closeBtn.onclick = () => modal.classList.remove('active');
-    modal.onclick = e => { if(e.target === modal) modal.classList.remove('active'); };
-
-    // Selección de opción
-    options.onclick = e => {
-      if(e.target.tagName === 'LI') {
-        // Marcar seleccionado
-        options.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
-        e.target.classList.add('selected');
-        // Mostrar valor
-        valueSpan.textContent = e.target.textContent;
-        modal.classList.remove('active');
-      }
-    };
-
-    // Búsqueda
-    searchInput.oninput = function() {
-      filterOptions(this.value);
-    };
-    function filterOptions(query) {
-      query = query.toLowerCase();
-      options.querySelectorAll('li').forEach(li => {
-        li.style.display = li.textContent.toLowerCase().includes(query) ? '' : 'none';
-      });
-    }
-  </script>
-
+<script src="statics/js.js"></script> 
 </body>
 </html>
